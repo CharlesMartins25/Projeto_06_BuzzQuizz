@@ -1,5 +1,7 @@
 function botAdd(){
-   alert("Bora bora");
+   let page = document.querySelector(".container");
+   page.innerHTML = "<link href= 'www.googe.com'>";
+
 }
 
 function getQuizzes() {
