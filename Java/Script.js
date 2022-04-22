@@ -1,6 +1,6 @@
 function botAdd(){
    let page = document.querySelector(".container");
-   page.innerHTML = "<link href= 'www.googe.com'>";
+   page.innerHTML = "<link href= 'www.google.com.br'>";
 
 }
 
