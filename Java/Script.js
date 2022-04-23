@@ -24,7 +24,7 @@ function renderAllQuizzes(response) {
     console.log(quizzes);
     for(let i = 0; i < quizzes.length; i++) {
         listQuizzes.innerHTML += `
-        <li id="${quizzes[i].id}" onclick=changeDisplay('initialScreen','especificQuizz');getQuizz(this.getAttribute("id"))><h3>${quizzes[i].title}</h3>
+        <li id="${quizzes[i].id}" onclick=changeScreen('initialScreen','especificQuizz');getQuizz(this.getAttribute("id"))><h3>${quizzes[i].title}</h3>
          <img class ="imagemQuizz" src="${quizzes[i].image}" alt="">
         </li>
         `
@@ -41,31 +41,55 @@ function getQuizz(id) {
 function renderQuizzQuestions(response) {
     let quizz = response.data;
     console.log(quizz);
+    let questions = quizz.questions;
+    console.log(questions);
+    let choosedQuestions = [];
     let tag = document.querySelector(".especificQuizz");
     tag.innerHTML += `
     <div class="banner">
         <img src="${quizz.image}" alt=""  width="100%" height="227">
         <h1>${quizz.title}</h1>
     </div>
-    <div class="container"> testandoi
-        <div class="question"> 
-            <div class="topo">
+    `
+    for (let i = 0; i < questions.length; i++ ) {
+
+        num = getRandomInt(0, questions.length);
+        
+        console.log("numero:" + num)
+
+        while (choosedQuestions.includes(num)) {
+            num = getRandomInt(0, questions.length);
+        }
+        choosedQuestions.push(num);
+        console.log(choosedQuestions);
+        tag.innerHTML += `
+        <div class="container"> 
+            <div class="question"> 
+                <div class="topo" >
+                    ${questions[i].title}
+                </div>
+                <div>
+                    fgfgsdgsdh
+                </div>
 
             </div>
-        </div>
 
-    </div>
-    `
-    
+        </div> 
+         `
+    }
+
 }
 
-function changeDisplay(a, b) {
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+function changeScreen(a, b) {
     let tag = document.querySelector("." + a);
-    
     tag.classList.add("hidden");
     document.querySelector("." + b).classList.remove("hidden");
-    
-    
 }
 
 getQuizzes();
