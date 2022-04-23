@@ -1,4 +1,4 @@
-const API = "https://mock-api.driven.com.br/api/v6/buzzquizz/";
+const API = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes";
 
 function botAdd(){
    let page = document.querySelector(".container");
@@ -6,9 +6,12 @@ function botAdd(){
 
 }
 
-let promise = axios.get(API + "quizzes");
-promise.then(renderAllQuizzes);
-let quizzes = promise.data; 
+function getQuizzes() {
+    let promise = axios.get(API);
+    promise.then(renderAllQuizzes);
+}
+
+//let quizzes = promise.data; 
 
 
 function test(promise) {
@@ -21,23 +24,17 @@ function renderAllQuizzes(response) {
     console.log(quizzes);
     for(let i = 0; i < quizzes.length; i++) {
         listQuizzes.innerHTML += `
-        <li id="${quizzes[i].id}"onclick="changeDisplay('initialScreen'); getQuizz(this.getAtribute("id"))"><h3>${quizzes[i].title}</h3>
+        <li id="${quizzes[i].id}" onclick=changeDisplay('initialScreen','especificQuizz');getQuizz(this.getAttribute("id"))><h3>${quizzes[i].title}</h3>
          <img class ="imagemQuizz" src="${quizzes[i].image}" alt="">
         </li>
         `
-       
     }
 }
 
-function getId(tag) {
-    document.querySelectorAll(".li");
-    id = tag.ge
-    console.log("id: " + tag)
-    return tag.id;
-}
 
-function getQuizz(tag, id) {
-    let response = axios.get(`${API}quizzes/1`)
+function getQuizz(id) {
+    console.log(id);
+    let promise = axios.get(`${API}/${id}`)
     promise.then(renderQuizzQuestions);
 }
 
@@ -45,18 +42,30 @@ function renderQuizzQuestions(response) {
     let quizz = response.data;
     console.log(quizz);
     let tag = document.querySelector(".especificQuizz");
-    tag.innerHTML += ``
+    tag.innerHTML += `
+    <div class="banner">
+        <img src="${quizz.image}" alt=""  width="100%" height="227">
+        <h1>${quizz.title}</h1>
+    </div>
+    <div class="container"> testandoi
+        <div class="question"> 
+            <div class="topo">
+
+            </div>
+        </div>
+
+    </div>
+    `
     
 }
 
-function changeDisplay(parameter) {
-    let tag = document.querySelector("." + parameter);
+function changeDisplay(a, b) {
+    let tag = document.querySelector("." + a);
     
-    if(tag.classList.contains("initialScreen")) {
-        tag.classList.add("hidden");
-        document.querySelector(".especificQuizz").classList.remove("hidden");
-    }
+    tag.classList.add("hidden");
+    document.querySelector("." + b).classList.remove("hidden");
+    
     
 }
 
-
+getQuizzes();

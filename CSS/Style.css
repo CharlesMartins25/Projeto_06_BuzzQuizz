@@ -115,3 +115,24 @@ ul {
 .hidden {
     display: none;
 }
+
+.banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.banner img{
+    filter: brightness(60%);
+    object-fit:cover;
+    
+}
+
+.banner h1 {
+    position: absolute;
+    font-weight: 400;
+    font-size: 39px;
+    line-height: 46px;
+    color:#FFFFFF;
+}
