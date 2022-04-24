@@ -1,8 +1,36 @@
 const API = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes";
 
-function botAdd(){
-   let page = document.querySelector(".container");
-   page.innerHTML = "<link href= 'www.googe.com'>";
+const botAdd = () => {
+   let page = document.querySelector(".criacaoQuizz");
+   page.innerHTML =
+   `
+   <h3> Comece pelo começo </h3>
+   <div class="quizzGeral">
+ 
+  <div class="titleQuizz" >
+  <input class="nameQ" name="title" type="text" placeholder="Titulo do seu quizz" focus>
+  </div>
+  <div class="imageUrl">
+ <input class="nameQ" name="title" type="text" placeholder="URL da imagem do seu quizz" focus>
+  </div>
+  <div class="questionQtd">
+  <input class="nameQ" name="title" type="text" placeholder="Quantidade de perguntas do seu quizz" focus>
+  </div>
+  <div class="levelsQtd">
+  <input class="nameQ" name="title" type="text" placeholder="Quantidades de níveis do seu quizz" focus>
+  </div>
+   
+   
+   </div>
+   <button onclick="criarQuizz()" class="botaoPag1Quizz">
+   Prosseguir para criar perguntas
+   </button>
+    `
+}
+
+const criarQuizz = () => {
+    let pagCriação = document.querySelector(".container")
+    pagCriação.innerHTML = `<button>Ola</button>`
 
 }
 
@@ -20,7 +48,7 @@ function test(promise) {
 
 function renderAllQuizzes(response) {
     let listQuizzes = document.querySelector("ul");
-    let quizzes = response.data;
+    let quizzes = response.data
     console.log(quizzes);
     for(let i = 0; i < quizzes.length; i++) {
         listQuizzes.innerHTML += `
@@ -32,9 +60,8 @@ function renderAllQuizzes(response) {
 }
 
 
-function getQuizz(id) {
-    console.log(id);
-    let promise = axios.get(`${API}/${id}`)
+function getQuizz(tag, id) {
+    let response = axios.get(`${API} quizzes/1`)
     promise.then(renderQuizzQuestions);
 }
 
@@ -130,5 +157,6 @@ function changeScreen(a, b) {
     tag.classList.add("hidden");
     document.querySelector("." + b).classList.remove("hidden");
 }
-
 getQuizzes();
+
+

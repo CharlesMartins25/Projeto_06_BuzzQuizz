@@ -136,7 +136,102 @@ ul {
     line-height: 46px;
     color:#FFFFFF;
 }
+.quizzGeral{ 
+width: 600px;
+height: 256px;
+background-color: #FFFFFF;
+margin-top: 27px;
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+h3{
+    margin-top: 71px;
+    font-size: 23px;
+    font-weight: 700;
+    color:#000000;
+    line-height: 27px;
+   
+}
+.titleQuizz{
+    background-color: #FFFFFF;
+    width: 564px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    margin-top: 22px;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1
+    
+}
+.imageUrl{
+    background-color: #FFFFFF;
+    width: 564px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    margin-top: 9px;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1
+}
+.questionQtd{
+    background-color: #FFFFFF;
+    width: 564px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    margin-top: 9px;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1
+}
+.levelsQtd{
+    background-color: #FFFFFF;
+    width: 564px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    margin-top: 9px;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1
+}
 
+
+input {
+
+    font-size: 19px;
+    line-height: 22px;
+    border: hidden;
+    font-weight: 400;
+    color: #000000;
+    margin-left: 24px;
+    width: 500px;
+
+}
+input:focus{
+    outline: none;
+}
+input::placeholder{
+    font-size: 19px;
+    font-style: italic;
+    color: #bababa;
+    font-weight: 400;
+    margin-left: 24px;
+}
+.botaoPag1Quizz{
+    width: 369px;
+    height: 54px;
+    margin-top: 85px;
+    background-color: #EC362D;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    font-weight: 400;
+    color:#fff5f4;
+    line-height: 25px;
+    cursor: pointer;
+}
 .question {
     background-color: #FFFFFF;
     width: 759px;
