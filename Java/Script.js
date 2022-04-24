@@ -40,10 +40,11 @@ function getQuizz(id) {
 
 function renderQuizzQuestions(response) {
     let quizz = response.data;
-    console.log(quizz);
+    console.log("quizz: " + quizz);
     let questions = quizz.questions;
-    console.log(questions);
-    let choosedQuestions = [];
+    console.log("questions: " + questions);
+
+    
     let tag = document.querySelector(".especificQuizz");
     tag.innerHTML += `
     <div class="banner">
@@ -53,30 +54,68 @@ function renderQuizzQuestions(response) {
     `
     for (let i = 0; i < questions.length; i++ ) {
 
-        num = getRandomInt(0, questions.length);
         
+        let answers = questions[i].answers;
+        console.log("answers: " + answers);
+        
+        let answersOrder = [];
+
+        for(let x = 0; x < answers.length; x++) {
+           num = getRandomInt(0, answers.length);
+
+           while (answersOrder.includes(num)) {
+            num = getRandomInt(0, answers.length);
+            }
+           answersOrder.push(num); 
+        }
+        
+            
         console.log("numero:" + num)
 
-        while (choosedQuestions.includes(num)) {
-            num = getRandomInt(0, questions.length);
-        }
-        choosedQuestions.push(num);
-        console.log(choosedQuestions);
+        
+
+       
+            console.log("answersOrder: " + answersOrder);
+        
         tag.innerHTML += `
         <div class="container"> 
             <div class="question"> 
-                <div class="topo" >
+                <div class="topo" style = background-color:${questions[i].color}>
                     ${questions[i].title}
                 </div>
-                <div>
-                    fgfgsdgsdh
+                <div class="answersList">
+                <div class="answer">
+                    
                 </div>
-
+                </div>
             </div>
-
         </div> 
          `
+        console.log(answersOrder);
+        for(let x = 0; x < answers.length; x++) {
+        
+            document.querySelector(".answersList").innerHTML += `
+            <div class="answer">
+                <img src="${questions[i].answers[answersOrder[x]].image}">
+                <div class="texto">${questions[i].answers[answersOrder[x]].text}</div> 
+            </div>
+            `
+        }
+                  
+{/* <img src="${questions[i].answers[0].image}">
+                    <div class="texto">${questions[i].answers[0].text}</div>  */}
     }
+    // for (let x = 0; x < answers.length; x++) {
+            
+
+
+    //         let options = document.querySelector(".answers");
+    //         options.innerHTML += `
+    //             <div class="answer">
+    //                 ${answers[num].text}
+    //             </div>
+    //         `
+    //     }
 
 }
 

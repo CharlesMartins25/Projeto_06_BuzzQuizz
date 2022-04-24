@@ -153,9 +153,15 @@ ul {
     font-size: 23px;
     line-height: 27px;
     color: #FFFFFF;
-    background-color: greenyellow;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.answer img {
+    width: 329.91px;
+    height: 175.2px;
 }
