@@ -161,7 +161,13 @@ ul {
     word-break: break-all;
 }
 
+.answersList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .answer img {
     width: 329.91px;
     height: 175.2px;
 }
+
