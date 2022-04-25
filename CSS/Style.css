@@ -235,11 +235,12 @@ input::placeholder{
 .question {
     background-color: #FFFFFF;
     width: 759px;
-    height: 676px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    justify-content: center;
+    margin-bottom: 50px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 .question .topo {
     width: 688.16px;
@@ -252,17 +253,58 @@ input::placeholder{
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+    margin-bottom: 10px;
     word-wrap: break-word;
     word-break: break-all;
+    background-color: red;
 }
+/* .questionContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid;
+} */
 
 .answersList {
     display: flex;
     flex-wrap: wrap;
+    gap: 20px;
+    border: solid;
 }
-
-.answer img {
+.answerOption {
+    margin-top: 10px;
+    width: 329.91;
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.answerOption img {
     width: 329.91px;
     height: 175.2px;
 }
+.answerOption text {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    box-sizing: content-box;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    width: 329px;
+}
+
+.unselected {
+    opacity: 0.3;
+}
+
+.wrong {
+    color: #FF4B4B
+}
+
+.correct {
+    color: #009C22
+}
+
 

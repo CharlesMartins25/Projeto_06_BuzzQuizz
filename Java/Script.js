@@ -39,9 +39,6 @@ function getQuizzes() {
     promise.then(renderAllQuizzes);
 }
 
-//let quizzes = promise.data; 
-
-
 function test(promise) {
     console.log(promise.data);
 }
@@ -60,8 +57,8 @@ function renderAllQuizzes(response) {
 }
 
 
-function getQuizz(tag, id) {
-    let response = axios.get(`${API} quizzes/1`)
+function getQuizz(id) {
+    let promise = axios.get(`${API}/${id}`)
     promise.then(renderQuizzQuestions);
 }
 
@@ -84,79 +81,83 @@ function renderQuizzQuestions(response) {
         
         let answers = questions[i].answers;
         console.log("answers: " + answers);
-        
-        let answersOrder = [];
-
-        for(let x = 0; x < answers.length; x++) {
-           num = getRandomInt(0, answers.length);
-
-           while (answersOrder.includes(num)) {
-            num = getRandomInt(0, answers.length);
-            }
-           answersOrder.push(num); 
-        }
-        
-            
-        console.log("numero:" + num)
-
-        
-
-       
-            console.log("answersOrder: " + answersOrder);
-        
+    
         tag.innerHTML += `
         <div class="container"> 
             <div class="question"> 
-                <div class="topo" style = background-color:${questions[i].color}>
-                    ${questions[i].title}
-                </div>
-                <div class="answersList">
-                <div class="answer">
-                    
-                </div>
+                <div class="questionContent">
+                    <div class="topo" style = background-color:${questions[i].color}>
+                        ${questions[i].title}
+                    </div>
+                    <div class="answersList answers-${i} ${i}">
+                    </div>
                 </div>
             </div>
         </div> 
          `
-        console.log(answersOrder);
-        for(let x = 0; x < answers.length; x++) {
-        
-            document.querySelector(".answersList").innerHTML += `
-            <div class="answer">
-                <img src="${questions[i].answers[answersOrder[x]].image}">
-                <div class="texto">${questions[i].answers[answersOrder[x]].text}</div> 
-            </div>
-            `
-        }
-                  
-{/* <img src="${questions[i].answers[0].image}">
-                    <div class="texto">${questions[i].answers[0].text}</div>  */}
+        renderAnswers(answers, i);
     }
-    // for (let x = 0; x < answers.length; x++) {
-            
+}     
+
+function randomNumber() {
+    return Math.random() - 0.5;
+}
+
+function onclickAnswer(answer, isCorrect, tamanho, lista) {
+    answer.classList.add("choosed");
+    const pai = document.querySelector(`.answers-${lista}`);
+    console.log(pai);
+    
+    for (let i = 1; i <= tamanho; i++) {
+    let filho = pai.document.querySelector(".option" + i)
+    if (!filho.classList.includes("choosed")) {
+        filho.classList.add("unselected")
+    }
+
+    let todos = answer.querySelectorAll(".answerOption");
+    console.log(todos); 
+    }
 
 
-    //         let options = document.querySelector(".answers");
-    //         options.innerHTML += `
-    //             <div class="answer">
-    //                 ${answers[num].text}
-    //             </div>
-    //         `
-    //     }
+
+//     let imagesAnswers = answer.querySelector(".answerOption img").closest(".answersList");
+//     console.log(imagesAnswers);
+//     let allAnswers = answer.querySelectorAll(".answerOption");
+
+//   turnTransparent(imagesAnswers, answer);
 
 }
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
+function turnTransparent(options, answer) {
+
+
+    // for (let i = 0; i < options.length; i++) {
+    //   options[i].classList.add("unselected");
+    // }
+    // answer.querySelector("img").classList.add("user-choice");
+}
+
+function renderAnswers(answers, x ){
+    
+    const tag = document.querySelector(`.answers-${x}`);
+    console.log("ghhdfhdhdf")
+    answers.sort(randomNumber);
+    for (let i = 0; i < answers.length; i++) {
+        tag.innerHTML += `
+        <div class ="answerOption option${i + 1}" onclick="onclickAnswer(this, ${answers[i].isCorrectAnswer}, ${answers.length}, ${x})">
+            <img src="${answers[i].image}">
+            <text class="texto">${answers[i].text}</text>
+        </div>
+        `
+    }
+} 
+
 
 function changeScreen(a, b) {
     let tag = document.querySelector("." + a);
     tag.classList.add("hidden");
     document.querySelector("." + b).classList.remove("hidden");
 }
-getQuizzes();
 
+getQuizzes();
 
