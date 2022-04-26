@@ -145,56 +145,27 @@ display: flex;
 align-items: center;
 flex-direction: column;
 }
-h3{
+h4{
     margin-top: 71px;
     font-size: 23px;
     font-weight: 700;
     color:#000000;
     line-height: 27px;
+ text-align: center;
+
    
 }
-.titleQuizz{
+.boxQuizz{
     background-color: #FFFFFF;
     width: 564px;
     height: 46px;
     display: flex;
     align-items: center;
-    margin-top: 22px;
+    margin-top: 12px;
     border-radius: 5px;
     border: 1px solid #d1d1d1
     
 }
-.imageUrl{
-    background-color: #FFFFFF;
-    width: 564px;
-    height: 46px;
-    display: flex;
-    align-items: center;
-    margin-top: 9px;
-    border-radius: 5px;
-    border: 1px solid #d1d1d1
-}
-.questionQtd{
-    background-color: #FFFFFF;
-    width: 564px;
-    height: 46px;
-    display: flex;
-    align-items: center;
-    margin-top: 9px;
-    border-radius: 5px;
-    border: 1px solid #d1d1d1
-}
-.levelsQtd{
-    background-color: #FFFFFF;
-    width: 564px;
-    height: 46px;
-    display: flex;
-    align-items: center;
-    margin-top: 9px;
-    border-radius: 5px;
-    border: 1px solid #d1d1d1
-}
-
 
 input {
 
@@ -203,8 +174,9 @@ input {
     border: hidden;
     font-weight: 400;
     color: #000000;
-    margin-left: 24px;
     width: 500px;
+    padding: 0 24px;
+    
 
 }
 input:focus{
@@ -215,12 +187,11 @@ input::placeholder{
     font-style: italic;
     color: #bababa;
     font-weight: 400;
-    margin-left: 24px;
 }
 .botaoPag1Quizz{
     width: 369px;
     height: 54px;
-    margin-top: 85px;
+    margin-top: 130px;
     background-color: #EC362D;
     border-radius: 15px;
     display: flex;
@@ -231,6 +202,7 @@ input::placeholder{
     color:#fff5f4;
     line-height: 25px;
     cursor: pointer;
+    margin-left: 120px;
 }
 .question {
     background-color: #FFFFFF;
@@ -253,4 +225,32 @@ input::placeholder{
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+}
+ .errorBack{
+     background-color: #ffe9e9;
+     z-index: 2;
+ }
+ .textoError {
+    font-size: 16px;
+    color: #ec362d;
+    width: 100%;
+ }
+ 
+ .boxQuestions{
+    background-color: #FFFFFF;
+    width: 564px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    margin-top: 22px;
+    border-radius: 5px;
+    border: 1px solid #d1d1d1
+    
+}
+h5{
+    margin-top: 63px;
+    font-size: 23px;
+    font-weight: 700;
+    
+
 }
